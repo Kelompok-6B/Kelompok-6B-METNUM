@@ -25,4 +25,4 @@ toleransi = 0.001
 hasil_akar = bisection_method(a, b, toleransi)
 
 if hasil_akar is not None:
-    print(f"Akar dari fungsi adalah {hasil_akar:.3f}")
+    print(f"Akar dari fungsi adalah {hasil_akar:.3f}") 
