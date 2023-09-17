@@ -1,5 +1,5 @@
 def f(x):
-    return x**3 - 2*x + 1
+    return x**3 - 2*x + 1 #fungsi yang diberikan
 
 def bisection_method(a, b, tol):
     if f(a) * f(b) >= 0:
