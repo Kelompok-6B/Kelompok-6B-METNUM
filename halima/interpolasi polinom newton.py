@@ -35,5 +35,4 @@ def main():
     result = newton_interpolasi(x_values, y_values, x_interpolasi)
     print(f"Interpolasi pada x = {x_interpolasi} adalah {result}")
 
-if _name_ == "_main_":
-    main()
+main()
