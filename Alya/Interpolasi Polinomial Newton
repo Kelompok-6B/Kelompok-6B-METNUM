@@ -1,0 +1,46 @@
+def newton_interpolasi(x_values, y_values, x):
+    n = len(x_values)
+    koefisien = y_values.copy()
+
+    # Menghitung koefisien interpolasi Newton
+    for j in range(1, n):
+        for i in range(n - 1, j - 1, -1):
+            koefisien[i] = (koefisien[i] - koefisien[i - 1]) / (x_values[i] - x_values[i - j])
+
+    result = koefisien[n - 1]
+
+    # Menghitung nilai interpolasi menggunakan koefisien
+    for i in range(n - 2, -1, -1):
+        result = result * (x - x_values[i]) + koefisien[i]
+
+    return result
+
+def inputan_user():
+    # Meminta input jumlah titik data dari pengguna
+    n = int(input("Masukkan jumlah titik data: "))
+
+    x_values = []
+    y_values = []
+
+    # Meminta input nilai x dan y dari pengguna untuk setiap titik data
+    for i in range(n):
+        x = float(input(f"Masukkan nilai x-{i + 1}: "))
+        y = float(input(f"Masukkan nilai y-{i + 1}: "))
+        x_values.append(x)
+        y_values.append(y)
+
+    # Meminta input nilai x yang akan diinterpolasi
+    x_interpolasi = float(input("Masukkan nilai x untuk diinterpolasi: "))
+
+    return x_values, y_values, x_interpolasi
+
+def main():
+    # Mendapatkan input dari pengguna
+    x_values, y_values, x_interpolasi = inputan_user()
+
+    # Menghitung interpolasi Newton
+    result = newton_interpolasi(x_values, y_values, x_interpolasi)
+    print(f"Interpolasi pada x = {x_interpolasi} adalah {result}")
+
+# Menjalankan program utama
+main()
