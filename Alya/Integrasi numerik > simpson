@@ -1,0 +1,35 @@
+# Metode Simpson 1/3
+
+# Definisikan fungsi untuk integrasi
+def fungsi(x):
+    return 1/(1 + x**2)
+
+# Implementasi Simpson 1/3 
+def simpson13(x_awal, x_akhir, n_interval):
+    # menghitung ukuran langkah
+    h = (x_akhir - x_awal) / n_interval
+    
+    # Menghitung penjumlahan
+    integrasi = fungsi(x_awal) + fungsi(x_akhir)
+    
+    for i in range(1, n_interval):
+        k = x_awal + i*h
+        
+        if i % 2 == 0:
+            integrasi = integrasi + 2 * fungsi(k)
+        else:
+            integrasi = integrasi + 4 * fungsi(k)
+    
+    # Menemukan nilai integrasi akhir
+    integrasi = integrasi * h/3
+    
+    return integrasi
+    
+# Bagian input
+batas_bawah = float(input("Masukkan batas bawah integrasi: "))
+batas_atas = float(input("Masukkan batas atas integrasi: "))
+n_sub_interval = int(input("Masukkan jumlah sub interval: "))
+
+# Memanggil fungsi
+hasil = simpson13(batas_bawah, batas_atas, n_sub_interval)
+print("Hasil integrasi dengan metode Simpson 1/3 adalah: %0.6f" % (hasil))
