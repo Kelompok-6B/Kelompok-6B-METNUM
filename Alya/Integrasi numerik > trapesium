@@ -1,0 +1,31 @@
+# Metode Trapesium
+
+# Mendefinisikan fungsi untuk integrasi
+def fungsi(x):
+    return 1/(1 + x**2)
+
+# Implementasi metode trapesium
+def trapesium(x_awal, x_akhir, n_interval):
+    # Menghitung ukuran langkah
+    h = (x_akhir - x_awal) / n_interval
+    
+    # Menemukan penjumlahan
+    integrasi = fungsi(x_awal) + fungsi(x_akhir)
+    
+    for i in range(1, n_interval):
+        k = x_awal + i*h
+        integrasi = integrasi + 2 * fungsi(k)
+    
+    # Menemukan nilai akhir dari integrasi
+    integrasi = integrasi * h/2
+    
+    return integrasi
+    
+# Bagian input
+batas_bawah_trapesium = float(input("Masukkan batas bawah integrasi: "))
+batas_atas_trapesium = float(input("Masukkan batas atas integrasi: "))
+n_sub_interval_trapesium = int(input("Masukkan jumlah sub interval: "))
+
+# Memanggil fungsi metode trapesium dan menampilkan hasil
+hasil_trapesium = trapesium(batas_bawah_trapesium, batas_atas_trapesium, n_sub_interval_trapesium)
+print("Hasil integrasi dengan metode Trapesium adalah: %0.6f" % (hasil_trapesium))
